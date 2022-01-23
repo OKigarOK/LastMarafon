@@ -1,34 +1,34 @@
-function getResultCalculation(action, a, b) {
-    if ((typeof a !== 'number') || (a !== a) ||
-        (typeof b !== 'number') || (b !== b)) {
+function Calc(action, a, b) {
+    const isNotValid = (typeof a !== 'number') || (typeof b !== 'number');
+    if (isNotValid) {
         return 'Error';
-    }
-    switch (action) {
-        case 'sum':
-            return a + b;
-        case 'multi':
-            return a * b;
-        case 'div':
-            switch (b) {
-                case 0 :
-                    return "Error";
-                default:
-                    return a / b;
-            }
-        case 'diff':
-            return a - b;
-        case 'deg':
-            return a ** b;
-        case 'rem':
-            switch (b) {
-                case 0 :
-                    return "Error";
-                default:
-                    return a % b;
-            }
-        default:
-            return 'unknown operation'
+    } else {
+        switch (action) {
+            case 'sum':
+                return a + b;
+            case 'multi':
+                return a * b;
+            case 'div':
+                return a / b;
+            case 'diff':
+                return a - b;
+            case 'deg':
+                return a ** b;
+            case 'rem':
+                return a % b;
+            default:
+                return 'unknown operation'
+        }
     }
 }
 
-console.log(getResultCalculation('div', 10, 5));
+console.log(Calc('sum', 10, 5));
+console.log(Calc('multi', 10, 5));
+console.log(Calc('div', 10, 5));
+console.log(Calc('diff', 10, 5));
+console.log(Calc('deg', 10, 5));
+console.log(Calc('rem', 10, 5));
+console.log(Calc('divdeg', 10, 5));
+console.log(Calc('div', 10, '5'));
+console.log(Calc('div', 10, ));
+

@@ -6,51 +6,55 @@ const list = {
 }
 
 function changeStatus(task, status) {
-    for (let key in list) {
-        if (task === key) {
-            list[key] = status;
-        }
-    }
+    list[task] = status;
 }
 
 function addTask(task) {
-    const addTask = {
-        [task]: 'To Do',
-    }
-    Object.assign(list, addTask);
+    list[task] = 'To Do';
 }
 
 function deleteTask(task) {
-    for (let key in list) {
-        if (task === key) {
-            delete list[key];
-        }
-    }
+    delete list[task];
 }
 
 function showList() {
+    let repeat;
     console.log('Todo:');
+    repeat = 0;
     for (let key in list) {
         if (list[key] === 'To Do') {
             console.log(' "' + key + '"');
+            repeat ++;
         }
     }
+    if (!repeat) console.log(' - ');
+
     console.log('In Progress:');
+    repeat = 0;
     for (let key in list) {
         if (list[key] === 'In progress') {
             console.log(' "' + key + '"');
+            repeat ++;
         }
     }
+    if (!repeat) console.log(' - ');
+
     console.log('Done:');
+    repeat = 0;
     for (let key in list) {
         if (list[key] === 'Done') {
             console.log(' "' + key + '"');
+            repeat ++;
         }
     }
+    if (!repeat) console.log(' - ');
+
 }
 
 showList();
 deleteTask('make a bed');
 addTask('become a developer');
 changeStatus('write a post', 'Done');
+changeStatus('make a todo list', 'Done');
 showList();
+

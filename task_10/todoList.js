@@ -48,7 +48,6 @@ function showList() {
         }
     }
     if (!repeat) console.log(' - ');
-
 }
 
 showList();
